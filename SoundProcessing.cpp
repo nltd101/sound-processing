@@ -6,6 +6,10 @@ short* SoundPCM::increaseVolumn() {
     short* res = new short[length];
 
     for (int i = 0; i < length; i++) {
+        if (i < 22) {
+            res[i] = rawData[i];
+            continue;
+        }
         res[i] = (rawData[i] * 1.3 > 32767) ? 32767 : rawData[i] * 1.3;
     }
     return res;
@@ -16,6 +20,10 @@ short* SoundPCM::decreaseVolumn() {
     short* res = new short[length];
 
     for (int i = 0; i < length; i++) {
+        if (i < 22) {
+            res[i] = rawData[i];
+            continue;
+        }
         res[i] = rawData[i] * 0.5;
     }
     return res;
@@ -92,8 +100,8 @@ SoundPCM::SoundPCM(short* rawdata, int length) {
     this->rawData = rawdata;
     this->length = length;
     this->iCircle = new vector<int>();
-    for (int rIndex = 0; rIndex < length - 1; rIndex++) {
-        if (this->rawData[rIndex] >= 0 && this->rawData[rIndex + 1] < 0 && abs(this->rawData[rIndex + 1] - this->rawData[rIndex]) < 2000) {
+    for (int rIndex = 22; rIndex < length - 1; rIndex++) {
+        if (this->rawData[rIndex] >= 0 && this->rawData[rIndex + 1] < 0) {// && abs(this->rawData[rIndex + 1] - this->rawData[rIndex]) < 500) {
             iCircle->push_back(rIndex);
         }
 
