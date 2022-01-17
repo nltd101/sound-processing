@@ -6,7 +6,7 @@ WaveFile::WaveFile(WAV_HEADER header, short*data, int length)
 	this->header = header;
 	this->data = new short[length];
 	this->length = length;
-	memcpy(this->data, data, (sizeof data[0]) * length);
+	memcpy(this->data, data, (sizeof data[0])* length);
 }
 WaveFile::WaveFile()
 {

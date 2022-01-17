@@ -28,13 +28,15 @@ int main(int argc, char* argv[])
    // filePath = "../../../data/test.txt";
   //  destFilePath = "../../../data/dest/test.txt";
 
-    WaveFile src;
-    src.load(filePath);
+    WaveFile* src=new WaveFile();
+    src->load(filePath);
     
-    src.write(destFilePath);
+   // src->write(destFilePath);
     
     Effect e(src);
-    
+    WaveFile* des = e.fadeInFadeOut(1000);
+    des->write(destFilePath);
+    delete src;
    
    
       

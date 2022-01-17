@@ -6,11 +6,12 @@ using namespace std;
 class Effect
 {
 public:
-	Effect(WaveFile file){
+	Effect(WaveFile* file){
 		this->wavFile = file;		
 	}
-	WaveFile fadeInFadeOut( int sampleNums);
+	WaveFile* fadeInFadeOut(int sampleNums);
+	WaveFile* mergeFile(const char* filename);
 private:
-	WaveFile wavFile;
+	WaveFile* wavFile;
 };
 
