@@ -1,7 +1,6 @@
 #include "Effect.h"
 WaveFile* Effect::fadeInFadeOut(int sampleNums) {
 	WaveFile* res = new WaveFile(this->wavFile->header, this->wavFile->getData(), this->wavFile->getLength());
-	
 	for (int i = 0; i < this->wavFile->getLength(); i++) {
 		if (i < 17) {
 			res->setData(i, this->wavFile->getData()[i]);
@@ -21,7 +20,15 @@ WaveFile* Effect::fadeInFadeOut(int sampleNums) {
 	return res;
 }
 
-WaveFile* Effect::mergeFile(const char* filename)
+WaveFile* Effect::mergeFile(WaveFile *waveFile)
 {
-	return nullptr;
+	WaveFile* res = new WaveFile(this->wavFile->header, this->wavFile->getData(), this->wavFile->getLength());
+	for (int i = 0; i < this->wavFile->getLength(); i++) {
+		if (i < 17) {
+			res->setData(i, this->wavFile->getData()[i]);
+		}
+		else
+			res->setData(i, max((int)this->wavFile->getData()[i],(int)res->getData()[i]));
+	}
+	return res;
 }

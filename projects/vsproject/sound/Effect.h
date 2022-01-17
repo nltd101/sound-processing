@@ -10,7 +10,7 @@ public:
 		this->wavFile = file;		
 	}
 	WaveFile* fadeInFadeOut(int sampleNums);
-	WaveFile* mergeFile(const char* filename);
+	WaveFile* mergeFile(WaveFile*);
 private:
 	WaveFile* wavFile;
 };
