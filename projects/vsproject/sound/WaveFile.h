@@ -29,12 +29,9 @@ public:
 	WaveFile();
 	void load(const char* filepath);
 	void write(const char* filepath);
-	int getLength();
-	short* getData();
 	void setData(int index, short value);
 	~WaveFile();
 	WAV_HEADER header;
-private:
 	short* data;
 	int length;
 };

@@ -6,11 +6,13 @@ WaveFile::WaveFile(WAV_HEADER header, short*data, int length)
 	this->header = header;
 	this->data = new short[length];
 	this->length = length;
-	memcpy(this->data, data, (sizeof data[0])* length);
+	for (int i = 0; i < length/2-1; i++) {
+		this->data[i] = data[i];
+	}
+//	memcpy(this->data, data, (sizeof data[0])* length);
 }
 WaveFile::WaveFile()
 {
-	
 }
 void WaveFile::load(const char* filepath)
 {
@@ -57,14 +59,7 @@ void WaveFile::write(const char* filepath)
 
 	fclose(wavFile);
 }
-int WaveFile::getLength()
-{
-	return this->length;
-}
-short* WaveFile::getData()
-{
-	return this->data;
-}
+
 void WaveFile::setData(int index, short value)
 {
 	this->data[index] = value;
