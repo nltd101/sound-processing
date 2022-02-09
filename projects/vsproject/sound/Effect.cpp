@@ -48,7 +48,7 @@ WaveFile* Effect::echo(int delay)
 	}
 	return res;
 }
-#define AMOUNTSAMPLETOAPPEND 6
+#define AMOUNTSAMPLETOAPPEND 6 
 WaveFile* Effect::roboticVoice() {
     WaveFile* res = new WaveFile(this->wavFile->header, this->wavFile->data, this->wavFile->length);
     vector<int>* iCircle = new vector<int>();
